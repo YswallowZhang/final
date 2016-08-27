@@ -15,12 +15,11 @@
 
             function createSliderList(sliderobj) {
                 var list = document.createElement('li');
+                list.className = "banner-list";
                 list.innerHTML = '\
-                    <li class="banner-list">\
                         <a href=" ' + sliderobj.link + '" title="' +  sliderobj.title +'" class="banner-list-info">\
                             <img src=" ' +  sliderobj.imgURL + '" class="banner-img">\
-                        </a>\
-                    </li>'
+                        </a>';
                 return list;
             }
             function createSliderCircle() {
@@ -62,6 +61,7 @@
             startX = start.clientX;
             startY = start.clientY;
             startTime = new Date().getTime();//获取start时间
+            containter.style.transition = "";
         })
 
         containter.addEventListener("touchmove", function(event) {
@@ -103,10 +103,6 @@
             X = 0;//清除上一次移动记录
             //end后继续调用
             keep = setInterval(still, 2500);
-            
-            setTimeout(function () {
-                containter.style.transition = "";//清除transition
-            },500)
             
         })
         changeStyle()
@@ -175,7 +171,7 @@
                 <span class="news-title">' + newsObj.title + '</span>\
                 <p class="news-cont">\
                     <span class="news-descrip">\
-                        ' + newsObj.description + '\
+                        ' + newsObj.description.slice(0, 30) + '...\
                     </span>\
                     <span class="news-typeColor" style="background-color:' + newsObj.typeColor + ';display:' + display + '">'
                          + newsObj.type + 
@@ -224,30 +220,106 @@ function ajax(conf) {
     var headerBtn = document.querySelector("#headerBtn");
     var footerBtn = document.querySelector('.footer-img-box');
     var footer = document.querySelector('footer');
-    var top = getComputedStyle(footer)['height'];
-    footer.style.top = -parseFloat(top) + 'px';
-    footer.style.height = window.innerHeight +　'px';
+
+    var footerHeight = getComputedStyle(footer)['height'];
+
+    if (parseFloat(footerHeight) < window.innerHeight) {
+        footer.style.height = window.innerHeight + 'px';
+    }
+
     headerBtn.addEventListener('click', function() {
          footer.style.top = 0;   
     });
     footerBtn.addEventListener('click', function() {
-        footer.style.top = -parseFloat(top) + 'px';
+        footer.style.top = '-' + getComputedStyle(footer)['height'];
     })
-
+    
 }());
 
 (function() {
 
-        function getColumn(columnObj) {
+    function getColumn(columnObj) {
+        var footerTop = document.querySelector("#footertopContain");
+        var footerBottom = document.querySelector(".footer-bottom-box");
 
+        columnObj.added.forEach(function(item, index) {
+            createFootertop(item, index);
+        });
+        columnObj.avaliable.forEach(function(item, index) {
+            var list = createFooterBottom(item.name);
+            footerBottom.appendChild(list);
+        });
+        add();
+        function createFootertop(obj, index) {
+            if(index % 4 == 0) {
+                var list = document.createElement("li");
+                list.className = "footer-top-list";
+                footerTop.appendChild(list);
+            }
+            var info = document.createElement("a");
+            info.className = "footer-top-info";
+            info.innerHTML = obj.name;
+
+            if(index % 4 == 3) {
+                info.style.border = "none";
+            }
+            footerTop.children[footerTop.children.length - 1].appendChild(info);
         }
 
-        ajax({
-            method:"GET",
-            url:'/tags',
-            callback: function(res) {
-                res = JSON.parse(res);
-            }
+        function createFooterBottom(item) {
+            var info = document.createElement("a");
+            info.setAttribute("class", "footer-bottom-info");
+            info.innerHTML = item;
+            return info
+        }
 
-        })
+        function add() {
+            var footerinfo = document.querySelectorAll(".footer-bottom-info");
+            for(var i = 0, len = footerinfo.length; i < len; i ++) {
+                footerinfo[i].addEventListener("click", (function() {
+                    var j = i;
+                    return function () {
+                        var topChild = footerTop.children[footerTop.children.length - 1];
+                        console.log(topChild.children.length)
+                        if(topChild.children.length == 4) {
+                            var list = document.createElement("li");
+                            list.className = "footer-top-list";
+                            footerTop.appendChild(list);
+                            topChild = list;
+                        }
+                        var info = document.createElement("a");
+                        info.className = "footer-top-info";
+                        info.innerHTML = footerinfo[j].innerHTML;
+
+                        if(topChild.children.length == 3) {
+                            info.style.border = "none";
+                        }
+
+                        topChild.appendChild(info);
+                        this.parentNode.removeChild(this);
+                    }
+                }()))
+            }
+        }
+    }
+
+
+    ajax({
+        method:"GET",
+        url:'/tags',
+        callback: function(res) {
+            res = JSON.parse(res);
+            getColumn(res);
+            var footer = document.querySelector('footer');
+            var top = getComputedStyle(footer)['height'];
+            footer.style.top = -parseFloat(top) + 'px';
+            var footerInfo = document.querySelectorAll(".footer-top-info");
+            for(var i = 0, len = footerInfo.length; i < len; i ++) {
+                footerInfo[i].addEventListener("click", function() {
+                    footer.style.top = '-' + top;
+                })
+            }
+        }
+
+    })
 }());
