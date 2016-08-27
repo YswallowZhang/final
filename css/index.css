@@ -208,7 +208,9 @@ header #headerCont .header-list {
 .news-right .news-cont .news-descrip {
   color: #808080;
   font-size: 12px;
+  line-height: 0.49rem;
 }
+
 .news-right .news-cont .news-post {
   color: #808080;
   float: right;
@@ -243,9 +245,11 @@ header #headerCont .header-list {
 }
 [data-dpr="2"] .news-descrip {
   font-size: 24px !important;
+  line-height: 0.98rem;
 }
 [data-dpr="3"] .news-descrip {
   font-size: 36px !important;
+  line-height: 1.47rem;
 }
 [data-dpr="2"] .news-typeColor {
   font-size: 20px !important;
