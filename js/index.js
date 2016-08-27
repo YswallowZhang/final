@@ -220,17 +220,23 @@ function ajax(conf) {
     var headerBtn = document.querySelector("#headerBtn");
     var footerBtn = document.querySelector('.footer-img-box');
     var footer = document.querySelector('footer');
+    var banner = document.querySelector('.banner');
+    var container = document.querySelector('.List');
 
-    var footerHeight = getComputedStyle(footer)['height'];
-
-    if (parseFloat(footerHeight) < window.innerHeight) {
-        footer.style.height = window.innerHeight + 'px';
-    }
+    var footerHeight = getComputedStyle(footer)['height']
+    var timer;
 
     headerBtn.addEventListener('click', function() {
-         footer.style.top = 0;   
+        footer.style.top = 0;   
+        timer = setTimeout(function()　{
+            banner.style.display = 'none';
+            container.style.display = 'none';
+        }, 500);
     });
     footerBtn.addEventListener('click', function() {
+        clearTimeout(timer);
+        banner.style.display = 'block';
+        container.style.display = 'block';
         footer.style.top = '-' + getComputedStyle(footer)['height'];
     })
     

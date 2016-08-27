@@ -265,8 +265,7 @@ header #headerCont .header-list {
   font-size: 30px !important;
 }
 footer {
-  position: fixed;
-  overflow: scroll;
+  position: absolute;
   z-index: 100;
   background: #fff;
   -webkit-transition: top 0.5s;
