@@ -228,7 +228,7 @@ header #headerCont .header-list {
   text-align: center;
   position: absolute;
   right:0;
-  bottom:0.025rem;
+  bottom:0.0125rem;
   color: #fff;
   font-size: 8px;
 }
