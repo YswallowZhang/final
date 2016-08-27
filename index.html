@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <script>!function(a,b){function c(){var b=f.getBoundingClientRect().width;b/i>540&&(b=540*i);var c=b/10;f.style.fontSize=c+"px",k.rem=a.rem=c}var d,e=a.document,f=e.documentElement,g=e.querySelector('meta[name="viewport"]'),h=e.querySelector('meta[name="flexible"]'),i=0,j=0,k=b.flexible||(b.flexible={});if(g){console.warn("将根据已有的meta标签来设置缩放比例");var l=g.getAttribute("content").match(/initial\-scale=([\d\.]+)/);l&&(j=parseFloat(l[1]),i=parseInt(1/j))}else if(h){var m=h.getAttribute("content");if(m){var n=m.match(/initial\-dpr=([\d\.]+)/),o=m.match(/maximum\-dpr=([\d\.]+)/);n&&(i=parseFloat(n[1]),j=parseFloat((1/i).toFixed(2))),o&&(i=parseFloat(o[1]),j=parseFloat((1/i).toFixed(2)))}}if(!i&&!j){var p=a.navigator.userAgent,q=(!!p.match(/android/gi),!!p.match(/iphone/gi)),r=q&&!!p.match(/OS 9_3/),s=a.devicePixelRatio;i=q&&!r?s>=3&&(!i||i>=3)?3:s>=2&&(!i||i>=2)?2:1:1,j=1/i}if(f.setAttribute("data-dpr",i),!g)if(g=e.createElement("meta"),g.setAttribute("name","viewport"),g.setAttribute("content","initial-scale="+j+", maximum-scale="+j+", minimum-scale="+j+", user-scalable=no"),f.firstElementChild)f.firstElementChild.appendChild(g);else{var t=e.createElement("div");t.appendChild(g),e.write(t.innerHTML)}a.addEventListener("resize",function(){clearTimeout(d),d=setTimeout(c,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(d),d=setTimeout(c,300))},!1),"complete"===e.readyState?e.body.style.fontSize=12*i+"px":e.addEventListener("DOMContentLoaded",function(){e.body.style.fontSize=12*i+"px"},!1),c(),k.dpr=a.dpr=i,k.refreshRem=c,k.rem2px=function(a){var b=parseFloat(a)*this.rem;return"string"==typeof a&&a.match(/rem$/)&&(b+="px"),b},k.px2rem=function(a){var b=parseFloat(a)/this.rem;return"string"==typeof a&&a.match(/px$/)&&(b+="rem"),b}}(window,window.lib||(window.lib={}));
+    </script>
+</head>
+<body>
+    <header>
+        <ul id="headerCont">
+            <li class="header-list"><a href="##" class="header-info">头条</a></li>
+            <li class="header-list"><a href="##" class="header-info">娱乐</a></li>
+            <li class="header-list"><a href="##" class="header-info">体育</a></li>
+            <li class="header-list"><a href="##" class="header-info">汽车</a></li>
+            <li class="header-list"><a href="##" class="header-info">科技</a></li>
+            <li id="headerBtn">
+                <img src="./images/header-border.png"  class="header-border">
+                <img src="./images/header-img.png" class="header-img">
+            </li>
+            <li id="headerBott"></li>
+        </ul>
+    </header>
+
+    <div class="banner">
+        <div class="banner-top">
+            <ul id="bannerSlider">
+            </ul>           
+        </div>
+        <div class="banner-bottom">
+            <div class="banner-bottom-cont">
+                <div class="banner-imgall">
+                   
+                </div>
+                <span id="banner-info"></span>
+            </div>
+            <ul class="banner-contro">
+            </ul>
+        </div>
+    </div>
+
+    <div class="List">
+        <ul id="news">
+           <!--  <li class="news-list">
+                <div class="news-img-box">
+                    <img src="./images/list-img-first.png" class="news-img">
+                </div>
+                <div class="news-right">
+                    <span class="news-title">脸谱阅后即焚应用排名下跌</span>
+                    <p class="news-cont">
+                        <span class="news-descrip">
+                            阅后即焚服务一度跻身App Store前50名免费应用排行榜。
+                        </span>
+                        <span class="news-typeColor">
+                            <a href="##" class="news-type">专题</a>
+                        </span>
+                        <span class="news-post">
+                            8907跟贴
+                        </span>
+                    </p>
+                </div>
+            </li>
+            <li class="news-list">
+                <div class="news-img-box">
+                    <img src="./images/list-img-first.png" class="news-img">
+                </div>
+                <div class="news-right">
+                    <span class="news-title">脸谱阅后即焚应用排名下跌</span>
+                    <p class="news-cont">
+                        <span class="news-descrip">
+                            阅后即焚服务一度跻身App Store前50名免费应用排行榜。
+                        </span>
+                        <span class="news-typeColor">
+                            <a href="##" class="news-type">专题</a>
+                        </span>
+                        <span class="news-post">
+                            8907跟贴
+                        </span>
+                    </p>
+                </div>
+            </li>
+            <li class="news-list">
+                <div class="news-img-box">
+                    <img src="./images/list-img-first.png" class="news-img">
+                </div>
+                <div class="news-right">
+                    <span class="news-title">脸谱阅后即焚应用排名下跌</span>
+                    <p class="news-cont">
+                        <span class="news-descrip">
+                            阅后即焚服务一度跻身App Store前50名免费应用排行榜。
+                        </span>
+                        <span class="news-post">
+                            8907跟贴
+                        </span>
+                    </p>
+                </div>
+            </li>
+            <li class="news-list">
+                <div class="news-img-box">
+                    <img src="./images/list-img-first.png" class="news-img">
+                </div>
+                <div class="news-right">
+                    <span class="news-title">脸谱阅后即焚应用排名下跌</span>
+                    <p class="news-cont">
+                        <span class="news-descrip">
+                            阅后即焚服务一度跻身App Store前50名免费应用排行榜。
+                        </span>
+                        <span class="news-typeColor">
+                            <a href="##" class="news-type">专题</a>
+                        </span>
+                        <span class="news-post">
+                            8907跟贴
+                        </span>
+                    </p>
+                </div>
+            </li> -->
+        </ul>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-top-title">
+                <span class="footer-change">切换栏目</span>
+                <span class="footer-del">排序删除</span>
+                <div class="footer-img-box">
+                    <img src="./images/footer-img.png" class="footer-img">
+                </div>
+            </div>
+            <div class="footer-top-box">
+                <ul>
+                    <li class="footer-top-list">
+                        <a href="##" class="footer-top-info footer-top-lr">头条</a>
+                        <a href="##" class="footer-top-info">娱乐</a>
+                        <a href="##" class="footer-top-info">体育</a>
+                        <a href="##" class="footer-top-info footer-top-lr">财经</a>
+                    </li>
+                    <li class="footer-top-list">
+                        <a href="##" class="footer-top-info footer-top-lr">科技</a>
+                        <div class="footer-top-border"></div>
+                        <a href="##" class="footer-top-info">汽车</a>
+                        <div class="footer-top-border"></div>
+                        <a href="##" class="footer-top-info">北京</a>
+                        <div class="footer-top-border"></div>
+                        <a href="##" class="footer-top-info footer-top-lr">军事</a>
+                    </li>
+                    <li class="footer-top-list">
+                        <a href="##" class="footer-top-info footer-top-lr">房产</a>
+                        <div class="footer-top-border"></div>
+                        <a href="##" class="footer-top-info">
+                        数码</a>
+                        <div class="footer-top-border"></div>
+                        <a href="##" class="footer-top-info">手机</a>
+                        <div class="footer-top-border"></div>
+                        <a href="##" class="footer-top-info footer-top-lr">移动互联</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+             <div class="footer-bottom-title">
+                 <p class="footer-add">点击添加更多栏目</p>
+             </div>
+             <div class="footer-bottom-box">
+                 <a href="##" class="footer-bottom-info">博客</a>
+                 <a href="##" class="footer-bottom-info">推荐</a>
+                 <a href="##" class="footer-bottom-info">论坛</a>
+                 <a href="##" class="footer-bottom-info">聚合阅读</a>
+                 <a href="##" class="footer-bottom-info">社会</a>
+                 <a href="##" class="footer-bottom-info">电影</a>
+                 <a href="##" class="footer-bottom-info">彩票</a>
+                 <a href="##" class="footer-bottom-info">NBA</a>
+                 <a href="##" class="footer-bottom-info">中国足球</a>
+                 <a href="##" class="footer-bottom-info">国际足球</a>
+                 <a href="##" class="footer-bottom-info">CBA</a>
+                 <a href="##" class="footer-bottom-info">轻松一刻</a>
+                 <a href="##" class="footer-bottom-info">读书</a>
+                 <a href="##" class="footer-bottom-info">教育</a>
+                 <a href="##" class="footer-bottom-info">旅游</a>
+                 <a href="##" class="footer-bottom-info">酒香</a>
+                 <a href="##" class="footer-bottom-info">暴雪游戏</a>
+                 <a href="##" class="footer-bottom-info">亲子</a>
+                 <a href="##" class="footer-bottom-info">葡萄酒</a>
+                 <a href="##" class="footer-bottom-info">时尚</a>
+             </div>
+        </div>
+    </footer>
+
+
+ 
+    <script src="https://redrock.cqupt.edu.cn/exam-mock/mock-min.js"></script>
+    <script src="https://redrock.cqupt.edu.cn/exam-mock/mock-data.js"></script>
+    <script src="./js/index.js"></script>
+
+    
+</body>
+</html>
