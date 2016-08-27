@@ -138,8 +138,9 @@
 
         var keep = setInterval(still, 2500);
     }
-
-
+}());
+var numnewCount = 0;
+function numnew() {
     var getNum = 10;
 
     //新闻部分
@@ -190,6 +191,7 @@
         callback: function(res) {
             res = JSON.parse(res);
             getnews(res);
+            if (numnewCount++ > 0) return;
             var bannerImg = document.querySelector(".banner-imgall")
             var bannerInfo = document.querySelector("#banner-info");
             bannerInfo.innerHTML = res[0].title;
@@ -201,8 +203,8 @@
             }
         }
     })
-}());
-
+};
+numnew();
 
 function ajax(conf) {
     var xhr = new XMLHttpRequest();
@@ -309,7 +311,6 @@ function ajax(conf) {
         }
     }
 
-
     ajax({
         method:"GET",
         url:'/tags',
@@ -328,4 +329,15 @@ function ajax(conf) {
         }
 
     })
+}());
+
+
+(function load() {
+    setInterval(function() {
+        if(window.innerHeight + document.body.scrollTop > parseFloat(getComputedStyle(document.body)['height']) * 0.95) {
+            console.log(1);
+            numnew();
+        }
+    }, 1000)
+  
 }());
