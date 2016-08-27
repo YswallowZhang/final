@@ -1,5 +1,5 @@
+//轮播部分
 ;(function() {
-
     function getLunbo() {
         function getSlider(sliderArr) {
             var bannerBox = document.querySelector('#bannerSlider');
@@ -39,8 +39,7 @@
                 var circleback = ['#9c9c9d', '#515151'];
                 mobileSlider(containter, circle, circleback);
             }
-        })
-        
+        })        
     }
     getLunbo();
     //轮播效果
@@ -139,11 +138,10 @@
         var keep = setInterval(still, 2500);
     }
 }());
+//新闻部分
 var numnewCount = 0;
 function numnew() {
     var getNum = 10;
-
-    //新闻部分
     function getnews(newsArr) {
 
         var newsBox = document.querySelector('#news');
@@ -164,24 +162,25 @@ function numnew() {
         }
 
         list.className = 'news-list';
-        list.innerHTML = 
-            '<div class="news-img-box">\
-                <img src="' + newsObj.imgURL + '" class="news-img">\
-            </div>\
-            <div class="news-right">\
-                <span class="news-title">' + newsObj.title + '</span>\
-                <p class="news-cont">\
-                    <span class="news-descrip">\
-                        ' + newsObj.description.slice(0, 30) + '...\
-                    </span>\
-                    <span class="news-typeColor" style="background-color:' + newsObj.typeColor + ';display:' + display + '">'
-                         + newsObj.type + 
-                    '</span>\
-                    <span class="news-post" style="right:' + right + '">\
-                        '+ newsObj.post + '跟贴\
-                    </span>\
-                </p>\
-            </div>'
+        list.innerHTML = '<a href="' + newsObj.link + '"> \
+                <div class="news-img-box">\
+                    <img src="' + newsObj.imgURL + '" class="news-img">\
+                </div>\
+                <div class="news-right">\
+                    <span class="news-title">' + newsObj.title + '</span>\
+                    <p class="news-cont">\
+                        <span class="news-descrip">\
+                            ' + newsObj.description.slice(0, 30) + '...\
+                        </span>\
+                        <span class="news-typeColor" style="background-color:' + newsObj.typeColor + ';display:' + display + '">'
+                             + newsObj.type + 
+                        '</span>\
+                        <span class="news-post" style="right:' + right + '">\
+                            '+ newsObj.post + '跟贴\
+                        </span>\
+                    </p>\
+                </div>\
+            </a>'
         return list;
     }
 
@@ -206,6 +205,7 @@ function numnew() {
 };
 numnew();
 
+//封装ajax
 function ajax(conf) {
     var xhr = new XMLHttpRequest();
     xhr.open(conf.method, conf.url, true);
@@ -227,7 +227,7 @@ function ajax(conf) {
 
     var footerHeight = getComputedStyle(footer)['height']
     var timer;
-
+    //隔500秒再消失
     headerBtn.addEventListener('click', function() {
         footer.style.top = 0;   
         timer = setTimeout(function()　{
@@ -235,6 +235,7 @@ function ajax(conf) {
             container.style.display = 'none';
         }, 500);
     });
+
     footerBtn.addEventListener('click', function() {
         clearTimeout(timer);
         banner.style.display = 'block';
@@ -244,8 +245,8 @@ function ajax(conf) {
     
 }());
 
+//菜单部分
 (function() {
-
     function getColumn(columnObj) {
         var footerTop = document.querySelector("#footertopContain");
         var footerBottom = document.querySelector(".footer-bottom-box");
@@ -341,11 +342,10 @@ function ajax(conf) {
                 })
             }
         }
-
     })
 }());
 
-
+//下拉加载
 (function load() {
     setInterval(function() {
         if(window.innerHeight + document.body.scrollTop > parseFloat(getComputedStyle(document.body)['height']) * 0.95) {
