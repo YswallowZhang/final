@@ -282,6 +282,9 @@ function ajax(conf) {
         }
 
         function add() {
+            var footer = document.querySelector('footer');
+            var container = document.querySelector('.List');
+            var banner = document.querySelector('.banner');
             var footerinfo = document.querySelectorAll(".footer-bottom-info");
             for(var i = 0, len = footerinfo.length; i < len; i ++) {
                 footerinfo[i].addEventListener("click", (function() {
@@ -304,6 +307,13 @@ function ajax(conf) {
                         }
 
                         topChild.appendChild(info);
+                        info.addEventListener('click', function () {
+                            var top = getComputedStyle(footer)['height'];
+
+                            footer.style.top = '-' + top;
+                            container.style.display = 'block';
+                            banner.style.display = 'block';
+                        });
                         this.parentNode.removeChild(this);
                     }
                 }()))
