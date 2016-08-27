@@ -227,7 +227,7 @@ function ajax(conf) {
 
     var footerHeight = getComputedStyle(footer)['height']
     var timer;
-    //隔500秒再消失
+    //隔500毫秒再消失
     headerBtn.addEventListener('click', function() {
         footer.style.top = 0;   
         timer = setTimeout(function()　{
