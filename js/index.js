@@ -319,11 +319,15 @@ function ajax(conf) {
             getColumn(res);
             var footer = document.querySelector('footer');
             var top = getComputedStyle(footer)['height'];
+            var container = document.querySelector('.List');
+            var banner = document.querySelector('.banner');
             footer.style.top = -parseFloat(top) + 'px';
             var footerInfo = document.querySelectorAll(".footer-top-info");
             for(var i = 0, len = footerInfo.length; i < len; i ++) {
                 footerInfo[i].addEventListener("click", function() {
                     footer.style.top = '-' + top;
+                    container.style.display = 'block';
+                    banner.style.display = 'block';
                 })
             }
         }
